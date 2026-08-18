@@ -101,6 +101,33 @@
   animation: aurora-drift-d 19s ease-in-out infinite;
 }
 
+@keyframes ribbon-drift-1 {
+  0%, 100% { transform: translate(-6%, -4%) rotate(-12deg) scaleX(1); }
+  50% { transform: translate(4%, 3%) rotate(-8deg) scaleX(1.08); }
+}
+
+@keyframes ribbon-drift-2 {
+  0%, 100% { transform: translate(5%, 2%) rotate(9deg) scaleX(1.05); }
+  50% { transform: translate(-5%, -3%) rotate(5deg) scaleX(0.95); }
+}
+
+@keyframes ribbon-drift-3 {
+  0%, 100% { transform: translate(-4%, 3%) rotate(-6deg) scaleX(0.98); }
+  50% { transform: translate(6%, -2%) rotate(-10deg) scaleX(1.1); }
+}
+
+.animate-ribbon-1 {
+  animation: ribbon-drift-1 20s ease-in-out infinite;
+}
+
+.animate-ribbon-2 {
+  animation: ribbon-drift-2 24s ease-in-out infinite;
+}
+
+.animate-ribbon-3 {
+  animation: ribbon-drift-3 28s ease-in-out infinite;
+}
+
 @keyframes totem-float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
