@@ -2,10 +2,13 @@ import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
 import { HeroVisual } from "@/components/hero-visual";
 import { SplitText } from "@/components/split-text";
+import { AuroraBackground } from "@/components/aurora-background";
 
 export function Hero() {
   return (
-    <section className="mx-auto flex max-w-6xl flex-col gap-12 px-6 pb-20 pt-16 sm:pt-24 lg:flex-row lg:items-center lg:pb-28 lg:pt-32">
+    <section className="relative mx-auto flex max-w-6xl flex-col gap-12 overflow-hidden px-6 pb-20 pt-16 sm:pt-24 lg:flex-row lg:items-center lg:pb-28 lg:pt-32">
+      <AuroraBackground />
+
       <div className="max-w-2xl">
         <p className="mb-5 text-sm font-medium tracking-wide text-accent uppercase">
           {siteConfig.role}

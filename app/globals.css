@@ -9,6 +9,7 @@
   --border: #e5e7eb;
   --card: #ffffff;
   --accent: #4f6df5;
+  --accent-2: #8b6df5;
   --accent-foreground: #ffffff;
 }
 
@@ -19,6 +20,7 @@
   --border: #1f2229;
   --card: #0e1015;
   --accent: #7b93ff;
+  --accent-2: #a78bfa;
   --accent-foreground: #08090c;
 }
 
@@ -29,6 +31,7 @@
   --color-border: var(--border);
   --color-card: var(--card);
   --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
   --color-accent-foreground: var(--accent-foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -57,6 +60,33 @@
 
 .animate-diagram-flow {
   animation: diagram-flow 2.4s ease-in-out infinite;
+}
+
+@keyframes aurora-drift-a {
+  0%, 100% { transform: translate(-8%, -6%) scale(1); }
+  50% { transform: translate(6%, 8%) scale(1.15); }
+}
+
+@keyframes aurora-drift-b {
+  0%, 100% { transform: translate(10%, 4%) scale(1.1); }
+  50% { transform: translate(-6%, -10%) scale(0.95); }
+}
+
+@keyframes aurora-drift-c {
+  0%, 100% { transform: translate(-4%, 10%) scale(0.95); }
+  50% { transform: translate(8%, -8%) scale(1.1); }
+}
+
+.animate-aurora-a {
+  animation: aurora-drift-a 22s ease-in-out infinite;
+}
+
+.animate-aurora-b {
+  animation: aurora-drift-b 26s ease-in-out infinite;
+}
+
+.animate-aurora-c {
+  animation: aurora-drift-c 30s ease-in-out infinite;
 }
 
 body {
