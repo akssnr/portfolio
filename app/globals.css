@@ -128,13 +128,62 @@
   animation: ribbon-drift-3 28s ease-in-out infinite;
 }
 
-@keyframes totem-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+/* ── Hero run trace ─────────────────────────────────────────────────────────
+   Drives the single moving dot in components/hero-pipeline.tsx.
+
+   GEOMETRY. --row / --rail-x / --lane-x are set inline on .hero-pipeline from
+   the SAME TypeScript constants (ROW / RAIL_X / LANE_X) that generate the
+   gutter SVG's path data. The keyframe and the drawing read one set of
+   numbers, so they cannot drift. Do not hardcode pixels here.
+
+   REDUCED MOTION — READ BEFORE EDITING. Do NOT try to make this keyframe's
+   100% frame double as the at-rest state. The prefers-reduced-motion block at
+   the end of this file forces animation-duration:0.01ms and
+   animation-iteration-count:1 but leaves animation-fill-mode at `none`, so an
+   animated element reverts to its BASE style, not its last keyframe. The
+   resting frame is a SEPARATE static element in the component, toggled with
+   motion-safe:hidden / motion-reduce:hidden. Moving the resting state into
+   these keyframes would silently strand a dot mid-wire for reduced-motion
+   users and nothing in lint, types, or CI would catch it.
+
+   THE STALL IS THE POINT. 24% → 32% is 0.72s of stillness at Database Write,
+   with one scale swell at 27%. That stop is how the failure reads. Do not
+   smooth it out, shorten it, or replace it with a colour change.
+
+   Long runs are matched at ~66.7 px/s so the token holds a constant velocity
+   through every straight segment.
+   ────────────────────────────────────────────────────────────────────────── */
+@keyframes hero-run {
+  /* enter at Raw Data Source */
+  0%   { transform: translate(calc(var(--rail-x) - 3px), calc(0.5 * var(--row) - 3px)) scale(1);   opacity: 0; }
+  3%   { transform: translate(calc(var(--rail-x) - 3px), calc(0.5 * var(--row) - 3px)) scale(1);   opacity: 1; }
+  /* run down through Batch Loader and Validation / Dedup to Database Write */
+  24%  { transform: translate(calc(var(--rail-x) - 3px), calc(3.5 * var(--row) - 3px)) scale(1);   opacity: 1; }
+  /* the failure: motion stops, one swell, 0.72s of stillness */
+  27%  { transform: translate(calc(var(--rail-x) - 3px), calc(3.5 * var(--row) - 3px)) scale(1.7); opacity: 1; }
+  32%  { transform: translate(calc(var(--rail-x) - 3px), calc(3.5 * var(--row) - 3px)) scale(1);   opacity: 1; }
+  /* drop below the write stage, elbow out onto the dashed recovery lane */
+  34%  { transform: translate(calc(var(--rail-x) - 3px), calc(3.5 * var(--row) + 11px)) scale(1);  opacity: 1; }
+  37%  { transform: translate(calc(var(--lane-x) - 3px), calc(3.5 * var(--row) + 11px)) scale(1);  opacity: 1; }
+  /* climb the lane past Validation / Dedup — never reaching Raw Data Source */
+  55%  { transform: translate(calc(var(--lane-x) - 3px), calc(1.5 * var(--row) - 3px)) scale(1);   opacity: 1; }
+  /* re-enter at Batch Loader: resumed, not restarted */
+  58%  { transform: translate(calc(var(--rail-x) - 3px), calc(1.5 * var(--row) - 3px)) scale(1);   opacity: 1; }
+  /* second pass completes through to Monitoring */
+  82%  { transform: translate(calc(var(--rail-x) - 3px), calc(4.5 * var(--row) - 3px)) scale(1);   opacity: 1; }
+  95%  { transform: translate(calc(var(--rail-x) - 3px), calc(4.5 * var(--row) - 3px)) scale(1);   opacity: 1; }
+  100% { transform: translate(calc(var(--rail-x) - 3px), calc(4.5 * var(--row) - 3px)) scale(1);   opacity: 0; }
 }
 
-.animate-totem-float {
-  animation: totem-float 4s ease-in-out infinite;
+.animate-hero-run {
+  animation: hero-run 9s linear infinite;
+}
+
+/* Pause on inspect. focus-within is what makes this keyboard-reachable —
+   the four case-study links inside the panel are the focusable children. */
+.hero-pipeline:hover .animate-hero-run,
+.hero-pipeline:focus-within .animate-hero-run {
+  animation-play-state: paused;
 }
 
 body {

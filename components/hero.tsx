@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
-import { HeroVisual } from "@/components/hero-visual";
+import { HeroPipeline } from "@/components/hero-pipeline";
 import { SplitText } from "@/components/split-text";
 import { AuroraBackground } from "@/components/aurora-background";
 
@@ -9,7 +9,7 @@ export function Hero() {
     <section className="relative overflow-hidden">
       <AuroraBackground />
 
-      <div className="relative mx-auto flex max-w-6xl flex-col gap-12 px-6 pb-20 pt-16 sm:pt-24 lg:flex-row lg:items-center lg:pb-28 lg:pt-32">
+      <div className="relative mx-auto flex max-w-6xl flex-col gap-12 px-6 pb-20 pt-16 sm:pt-24 lg:grid lg:grid-cols-[minmax(0,1.7fr)_minmax(20rem,1fr)] lg:items-center lg:gap-10 lg:pb-28 lg:pt-32">
         <div className="max-w-2xl">
           <p className="mb-5 text-sm font-medium tracking-wide text-accent uppercase">
             {siteConfig.role}
@@ -35,8 +35,8 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="w-full lg:flex-1">
-          <HeroVisual />
+        <div className="w-full max-w-lg lg:max-w-none">
+          <HeroPipeline />
         </div>
       </div>
     </section>
