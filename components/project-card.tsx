@@ -7,7 +7,7 @@ export function ProjectCard({ project }: { project: Project }) {
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className="group flex flex-col rounded-xl border border-border bg-card p-6 transition-colors hover:border-accent"
+      className="group flex h-full flex-col rounded-xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:border-accent hover:shadow-[0_0_30px_-8px_var(--accent)]"
     >
       <p className="text-xs font-medium tracking-wide text-accent uppercase">
         {project.category}

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { SectionHeading } from "@/components/section-heading";
+import { PageGlow } from "@/components/page-glow";
+import { ScrollReveal } from "@/components/scroll-reveal";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = buildMetadata({
@@ -11,8 +13,12 @@ export const metadata: Metadata = buildMetadata({
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto max-w-3xl px-6 py-20">
-      <SectionHeading eyebrow="About" title={siteConfig.name} />
+    <div className="relative">
+      <PageGlow />
+      <div className="mx-auto max-w-3xl px-6 py-20">
+      <ScrollReveal>
+        <SectionHeading eyebrow="About" title={siteConfig.name} />
+      </ScrollReveal>
 
       <div className="mt-10 flex flex-col gap-6 text-base leading-relaxed text-muted">
         <p>
@@ -44,6 +50,7 @@ export default function AboutPage() {
           under load, and built with the assumption that something will eventually fail — so the
           system needs a way to recover.
         </p>
+      </div>
       </div>
     </div>
   );

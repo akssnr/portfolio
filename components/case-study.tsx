@@ -1,6 +1,7 @@
 import type { Project } from "@/content/projects";
 import { ArchitectureDiagram } from "@/components/architecture-diagram";
 import { SectionHeading } from "@/components/section-heading";
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 function Section({
   index,
@@ -12,11 +13,13 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="border-t border-border py-12 first:border-t-0 first:pt-0">
-      <p className="text-xs font-medium tracking-wide text-accent uppercase">{index}</p>
-      <h2 className="mt-2 text-2xl font-semibold text-foreground">{title}</h2>
-      <div className="mt-5 max-w-3xl">{children}</div>
-    </section>
+    <ScrollReveal>
+      <section className="border-t border-border py-12">
+        <p className="text-xs font-medium tracking-wide text-accent uppercase">{index}</p>
+        <h2 className="mt-2 text-2xl font-semibold text-foreground">{title}</h2>
+        <div className="mt-5 max-w-3xl">{children}</div>
+      </section>
+    </ScrollReveal>
   );
 }
 

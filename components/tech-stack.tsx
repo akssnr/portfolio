@@ -12,7 +12,7 @@ export function TechStackSection() {
             {group.items.map((item) => (
               <li
                 key={item}
-                className="rounded-md border border-border px-3 py-1.5 text-sm text-muted"
+                className="rounded-md border border-border px-3 py-1.5 text-sm text-muted transition-colors hover:border-accent hover:text-foreground"
               >
                 {item}
               </li>

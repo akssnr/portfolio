@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { buildMetadata } from "@/lib/seo";
 import { CaseStudy } from "@/components/case-study";
 import { ProjectGrid } from "@/components/project-grid";
+import { PageGlow } from "@/components/page-glow";
 import { getProjectBySlug, projects } from "@/content/projects";
 
 export function generateStaticParams() {
@@ -36,10 +37,13 @@ export default async function ProjectPage({
   const related = projects.filter((p) => p.slug !== project.slug).slice(0, 2);
 
   return (
-    <div className="mx-auto max-w-3xl px-6 py-20">
-      <CaseStudy project={project} />
-      <div className="mt-6">
-        <ProjectGrid projects={related} />
+    <div className="relative">
+      <PageGlow />
+      <div className="mx-auto max-w-3xl px-6 py-20">
+        <CaseStudy project={project} />
+        <div className="mt-6">
+          <ProjectGrid projects={related} />
+        </div>
       </div>
     </div>
   );
