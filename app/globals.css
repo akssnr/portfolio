@@ -40,6 +40,16 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* Registering the animation here is what lets Tailwind generate a BASE
+   `animate-diagram-flow` utility, which is what a variant like
+   `motion-safe:` needs something to attach to. Defining only a plain
+   `.animate-diagram-flow` rule (as this file used to) compiles the variant
+   form to nothing at all — the class is inert and the element silently never
+   animates. See components/architecture-diagram.tsx. */
+@theme {
+  --animate-diagram-flow: diagram-flow 2.4s ease-in-out infinite;
+}
+
 * {
   border-color: var(--border);
 }
@@ -61,9 +71,6 @@
   }
 }
 
-.animate-diagram-flow {
-  animation: diagram-flow 2.4s ease-in-out infinite;
-}
 
 @keyframes aurora-drift-a {
   0%, 100% { transform: translate(-14%, -10%) scale(1); }
