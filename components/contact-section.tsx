@@ -1,6 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { siteConfig } from "@/lib/site-config";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -37,7 +40,8 @@ export function ContactSection() {
         <dl className="mt-6 flex flex-col gap-4">
           <div>
             <dt className="text-xs font-medium tracking-wide text-accent uppercase">Email</dt>
-            <dd className="mt-1">
+            <dd className="mt-1 flex items-center gap-2">
+              <FontAwesomeIcon icon={faEnvelope} className="size-4 text-muted" />
               <a href={`mailto:${siteConfig.email}`} className="text-foreground hover:text-accent">
                 {siteConfig.email}
               </a>
@@ -45,7 +49,8 @@ export function ContactSection() {
           </div>
           <div>
             <dt className="text-xs font-medium tracking-wide text-accent uppercase">LinkedIn</dt>
-            <dd className="mt-1">
+            <dd className="mt-1 flex items-center gap-2">
+              <FontAwesomeIcon icon={faLinkedin} className="size-4 text-muted" />
               <a
                 href={siteConfig.links.linkedin}
                 target="_blank"
@@ -58,7 +63,8 @@ export function ContactSection() {
           </div>
           <div>
             <dt className="text-xs font-medium tracking-wide text-accent uppercase">GitHub</dt>
-            <dd className="mt-1">
+            <dd className="mt-1 flex items-center gap-2">
+              <FontAwesomeIcon icon={faGithub} className="size-4 text-muted" />
               <a
                 href={siteConfig.links.github}
                 target="_blank"

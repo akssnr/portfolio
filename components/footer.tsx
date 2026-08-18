@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { navItems, siteConfig } from "@/lib/site-config";
 
 export function Footer() {
@@ -22,22 +24,24 @@ export function Footer() {
           ))}
         </nav>
 
-        <div className="flex gap-x-6 text-sm">
+        <div className="flex gap-x-5">
           <a
             href={siteConfig.links.github}
             target="_blank"
             rel="noreferrer noopener"
+            aria-label="GitHub"
             className="text-muted transition-colors hover:text-foreground"
           >
-            GitHub
+            <FontAwesomeIcon icon={faGithub} className="size-5" />
           </a>
           <a
             href={siteConfig.links.linkedin}
             target="_blank"
             rel="noreferrer noopener"
+            aria-label="LinkedIn"
             className="text-muted transition-colors hover:text-foreground"
           >
-            LinkedIn
+            <FontAwesomeIcon icon={faLinkedin} className="size-5" />
           </a>
         </div>
       </div>

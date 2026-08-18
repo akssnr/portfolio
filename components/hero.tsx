@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
 import { HeroVisual } from "@/components/hero-visual";
+import { SplitText } from "@/components/split-text";
 
 export function Hero() {
   return (
@@ -10,7 +11,7 @@ export function Hero() {
           {siteConfig.role}
         </p>
         <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-          I build backend systems, AI-powered applications, and production infrastructure.
+          <SplitText text="I build backend systems, AI-powered applications, and production infrastructure." />
         </h1>
         <p className="mt-6 text-lg leading-relaxed text-muted">{siteConfig.description}</p>
 

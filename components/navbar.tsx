@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { navItems, siteConfig } from "@/lib/site-config";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
@@ -53,7 +54,7 @@ export function Navbar() {
             onClick={() => setOpen((v) => !v)}
             className="flex size-9 items-center justify-center rounded-md border border-border text-foreground"
           >
-            {open ? <X className="size-4" /> : <Menu className="size-4" />}
+            <FontAwesomeIcon icon={open ? faXmark : faBars} className="size-4" />
           </button>
         </div>
       </div>

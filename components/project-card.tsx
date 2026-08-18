@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import type { Project } from "@/content/projects";
 
 export function ProjectCard({ project }: { project: Project }) {
@@ -29,7 +30,10 @@ export function ProjectCard({ project }: { project: Project }) {
 
       <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-foreground">
         View case study
-        <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        <FontAwesomeIcon
+          icon={faArrowUpRightFromSquare}
+          className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+        />
       </span>
     </Link>
   );

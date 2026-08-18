@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import { Moon, Sun } from "lucide-react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
@@ -26,7 +27,7 @@ export function ThemeToggle() {
       aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
       className="flex size-9 items-center justify-center rounded-md border border-border text-foreground/80 transition-colors hover:border-accent hover:text-foreground"
     >
-      {isDark ? <Sun className="size-4" /> : <Moon className="size-4" />}
+      <FontAwesomeIcon icon={isDark ? faSun : faMoon} className="size-4" />
     </button>
   );
 }
