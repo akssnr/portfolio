@@ -28,10 +28,17 @@ export const timeline: TimelineEntry[] = [
     tags: ["Backend", "AI", "Infrastructure"],
   },
   {
-    period: "08/2025 – Present",
+    period: "08/2025 – 11/2025",
     title: "AI Developer, Kaycomm Services",
     summary:
-      "Pune. Building the Semantic Engine powering search, recommendations, and content understanding for UrbanPillar and CornerSpaces. Also: an AI-driven workflow website builder, LLM data pipelines for content generation, Vastu analysis via floor-plan interpretation, and full-stack Docker + Portainer production infrastructure.",
+      "Pune. Built the Semantic Engine powering search, recommendations, and content understanding for UrbanPillar and CornerSpaces. Also: an AI-driven workflow website builder, LLM data pipelines for content generation, Vastu analysis via floor-plan interpretation, and full-stack Docker + Portainer production infrastructure.",
     tags: ["AI", "Backend", "Infrastructure"],
+  },
+  {
+    period: "12/2025 – Present",
+    title: "AI Engineer II (Team Lead), Kaycomm Services",
+    summary:
+      "Pune. Promoted to lead — same engineering scope (semantic engine, LLM data pipelines, production infrastructure) plus team leadership responsibility.",
+    tags: ["AI", "Leadership", "Backend", "Infrastructure"],
   },
 ];

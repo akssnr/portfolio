@@ -23,7 +23,7 @@ export const projects: Project[] = [
     name: "Semantic Engine — UrbanPillar & CornerSpaces",
     category: "Backend Systems",
     shortDescription:
-      "AI Developer at Kaycomm Services: the semantic engine powering search, recommendations, and content understanding for UrbanPillar and CornerSpaces, plus the workflow website builder and infrastructure it runs on.",
+      "AI Engineer II (Team Lead) at Kaycomm Services: the semantic engine powering search, recommendations, and content understanding for UrbanPillar and CornerSpaces, plus the workflow website builder and infrastructure it runs on.",
     techHighlights: [
       "Node.js",
       "PostgreSQL",

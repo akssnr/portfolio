@@ -30,10 +30,10 @@ export default function AboutPage() {
           not an afterthought.
         </p>
         <p>
-          I&apos;m currently an AI Developer at Kaycomm Services, building the semantic engine
-          behind search, recommendations, and content understanding for UrbanPillar and
-          CornerSpaces — alongside an AI-driven workflow website builder, LLM data pipelines, and
-          the Docker/Portainer infrastructure it all runs on. Before that, at The CodeWise, I built
+          I&apos;m currently an AI Engineer II (Team Lead) at Kaycomm Services, building the
+          semantic engine behind search, recommendations, and content understanding for
+          UrbanPillar and CornerSpaces — alongside an AI-driven workflow website builder, LLM data
+          pipelines, and the Docker/Portainer infrastructure it all runs on. Before that, at The CodeWise, I built
           AI-powered document parsing and summarization tools (LangChain, Weaviate) and scalable
           FastAPI backends, and owned the VPS/NGINX side of getting them into production. Alongside
           that: document-intelligence systems built on retrieval-augmented generation, large-scale
