@@ -1,58 +1,82 @@
-const nodes = [
-  { id: "api", label: "API", x: 20, y: 20 },
-  { id: "cache", label: "Cache", x: 80, y: 15 },
-  { id: "db", label: "Database", x: 15, y: 55 },
-  { id: "queue", label: "Queue", x: 55, y: 50 },
-  { id: "ai", label: "AI", x: 85, y: 55 },
-  { id: "infra", label: "Infra", x: 45, y: 85 },
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faServer,
+  faDatabase,
+  faBolt,
+  faLayerGroup,
+  faBrain,
+  faCloud,
+} from "@fortawesome/free-solid-svg-icons";
+import { cn } from "@/lib/utils";
+
+const totems = [
+  { id: "api", label: "API", icon: faServer, tone: "accent" as const, height: "h-32", delay: "0s" },
+  { id: "cache", label: "Cache", icon: faBolt, tone: "accent-3" as const, height: "h-24", delay: "0.4s" },
+  { id: "database", label: "Database", icon: faDatabase, tone: "accent-2" as const, height: "h-36", delay: "0.8s" },
+  { id: "queue", label: "Queue", icon: faLayerGroup, tone: "accent" as const, height: "h-28", delay: "1.2s" },
+  { id: "ai", label: "AI", icon: faBrain, tone: "accent-2" as const, height: "h-32", delay: "1.6s" },
+  { id: "infra", label: "Infra", icon: faCloud, tone: "accent-3" as const, height: "h-24", delay: "2s" },
 ];
 
-const edges: [string, string][] = [
-  ["api", "cache"],
-  ["api", "db"],
-  ["api", "queue"],
-  ["queue", "ai"],
-  ["db", "infra"],
-  ["queue", "infra"],
-];
+const toneVar: Record<(typeof totems)[number]["tone"], string> = {
+  accent: "var(--accent)",
+  "accent-2": "var(--accent-2)",
+  "accent-3": "var(--accent-3)",
+};
 
 export function HeroVisual() {
-  const byId = Object.fromEntries(nodes.map((n) => [n.id, n]));
-
   return (
     <div
-      className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-border bg-card"
       aria-hidden
+      className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-border bg-card"
     >
-      <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full">
-        {edges.map(([a, b], i) => {
-          const from = byId[a];
-          const to = byId[b];
-          return (
-            <line
-              key={`${a}-${b}`}
-              x1={from.x}
-              y1={from.y}
-              x2={to.x}
-              y2={to.y}
-              stroke="var(--border)"
-              strokeWidth="0.4"
-              className="motion-safe:animate-pulse"
-              style={{ animationDelay: `${i * 0.4}s`, animationDuration: "4s" }}
-            />
-          );
-        })}
-      </svg>
+      <div
+        className="absolute inset-x-0 bottom-0 h-2/3 opacity-25"
+        style={{
+          backgroundImage:
+            "linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+          maskImage: "linear-gradient(to top, black, transparent)",
+          WebkitMaskImage: "linear-gradient(to top, black, transparent)",
+          transform: "perspective(300px) rotateX(55deg)",
+          transformOrigin: "bottom",
+        }}
+      />
 
-      {nodes.map((node) => (
-        <div
-          key={node.id}
-          className="absolute flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md border border-border bg-background px-3 py-1.5 text-xs font-medium text-foreground shadow-sm"
-          style={{ left: `${node.x}%`, top: `${node.y}%` }}
-        >
-          {node.label}
-        </div>
-      ))}
+      <div className="relative flex h-full items-end justify-center gap-4 px-6 pb-10 sm:gap-6 sm:px-10">
+        {totems.map((totem) => (
+          <div
+            key={totem.id}
+            className="animate-totem-float flex flex-col items-center gap-3"
+            style={{ animationDelay: totem.delay }}
+          >
+            <div
+              className={cn(
+                "flex w-12 items-center justify-center rounded-t-md rounded-b-sm border sm:w-14",
+                totem.height
+              )}
+              style={{
+                borderColor: toneVar[totem.tone],
+                background: `linear-gradient(180deg, color-mix(in srgb, ${toneVar[totem.tone]} 22%, var(--card)), var(--card))`,
+                boxShadow: `0 0 24px 2px color-mix(in srgb, ${toneVar[totem.tone]} 55%, transparent), inset 0 0 12px color-mix(in srgb, ${toneVar[totem.tone]} 35%, transparent)`,
+              }}
+            >
+              <FontAwesomeIcon
+                icon={totem.icon}
+                className="size-4 sm:size-5"
+                style={{ color: toneVar[totem.tone] }}
+              />
+            </div>
+
+            <div
+              className="h-1.5 w-10 rounded-full opacity-70 blur-[3px] sm:w-12"
+              style={{ background: toneVar[totem.tone] }}
+            />
+
+            <span className="text-[11px] font-medium text-muted sm:text-xs">{totem.label}</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

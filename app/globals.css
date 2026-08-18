@@ -101,6 +101,15 @@
   animation: aurora-drift-d 19s ease-in-out infinite;
 }
 
+@keyframes totem-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-totem-float {
+  animation: totem-float 4s ease-in-out infinite;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
