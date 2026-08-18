@@ -116,17 +116,17 @@ export function EngineeringGraph() {
         ))}
       </ol>
 
-      <div className="rounded-xl border border-border bg-card p-6 sm:p-8">
+      <div className="max-w-2xl rounded-xl border border-border bg-card p-6 sm:p-8">
         <p className="text-xs font-medium tracking-wide text-accent uppercase">
           {activeNode.label}
         </p>
         <p className="mt-2 text-sm text-muted">{activeNode.summary}</p>
 
-        <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <div className="mt-6 flex flex-wrap gap-3">
           {activeNode.tech.map((t) => (
             <div
               key={t.name}
-              className="rounded-lg border border-border bg-background px-4 py-3"
+              className="w-full min-w-[220px] flex-1 basis-64 rounded-lg border border-border bg-background px-4 py-3"
             >
               <p className="text-sm font-medium text-foreground">{t.name}</p>
               <p className="mt-1 text-xs leading-relaxed text-muted">{t.note}</p>
